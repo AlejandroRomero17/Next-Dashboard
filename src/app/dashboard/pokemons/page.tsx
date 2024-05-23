@@ -1,8 +1,20 @@
-const getPokemons = async (limit = 20, offset = 0)  => {
-  const data = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
+// import { PokemonsResponse } from '@/app/pokemons';
+// import { SimplePokemon } from '../../pokemons/interfaces/simple-pokemon';
+
+import { PokemonsResponse, SimplePokemon } from "@/app/pokemons";
+
+const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => {
+  const data: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)
     .then(res => res.json())
 
-  return data
+  const pokemons = data.results.map(pokemon =>  
+  ({
+    id: '',
+    name: pokemon.name,
+  })
+  )
+
+  return pokemons;
 }
 
 export default async function PokemonsPage() {
@@ -10,7 +22,7 @@ export default async function PokemonsPage() {
 
   return (
     <div>
-      { JSON.stringify(pokemons)}
+      {JSON.stringify(pokemons)}
     </div>
   );
 }
