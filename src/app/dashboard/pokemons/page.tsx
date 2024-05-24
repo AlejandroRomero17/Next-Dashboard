@@ -18,6 +18,8 @@ export default async function PokemonsPage() {
 
   return (
     <div className="flex flex-col">
+      <span className="my-2 text-5xl">Pokemons List<small> Static</small></span>
+
       <div className="flex flex-wrap items-center justify-center gap-10">
         {
           pokemons.map(pokemon => (
@@ -30,6 +32,7 @@ export default async function PokemonsPage() {
             />
           ))
         }
+
       </div>
     </div>
   );
