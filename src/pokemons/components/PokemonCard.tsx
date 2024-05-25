@@ -38,7 +38,7 @@ const PokemonCard = ({ pokemon }: Props) => {
         <div className="border-b"> {/* Sección inferior de la tarjeta */}
           <Link href="/dashboard/main" className="flex items-center px-4 py-2 hover:bg-gray-100">
             <div className="text-red-600">
-              <IoHeartOutline /> {/* Ícono de corazón */}
+              <IoHeartOutline />
             </div>
             <div className="pl-3">
               <p className="text-sm font-medium leading-none text-gray-800">
