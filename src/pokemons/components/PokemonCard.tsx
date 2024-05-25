@@ -28,7 +28,7 @@ const PokemonCard = ({ pokemon }: Props) => {
           <p className="text-sm text-gray-100">Romerito@romero.com</p>
           <div className="mt-5">
             <Link
-              href={`/pokemon/${id}`}
+              href={`/dashboard/pokemon/${id}`}
               className="px-4 py-2 text-xs font-semibold text-gray-100 border rounded-full"
             >
               Más Información
