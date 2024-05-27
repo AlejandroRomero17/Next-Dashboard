@@ -3,6 +3,7 @@ import { Pokemon } from "@/pokemons";
 import { Metadata } from "next";
 // Importamos el componente Image desde "next/image"
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 // Definimos la interfaz Props que contiene un objeto params con una propiedad id de tipo string
 interface Props {
@@ -30,16 +31,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Función asíncrona para obtener los datos de un Pokémon desde la API
 const getPokemon = async (id: string): Promise<Pokemon> => {
-  // Hacemos una solicitud a la API de Pokémon usando fetch y forzamos el uso de la caché
-  const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`,
-    {
-      cache: 'force-cache' //TODO: Cambiar esto en un futuro
-    }
-  ).then(response => response.json());
-  // Log para verificar el nombre del Pokémon cargado
-  console.log('The Pokemon charged is', pokemon.name);
-  // Devolvemos los datos del Pokémon
-  return pokemon
+  try {
+    // Hacemos una solicitud a la API de Pokémon usando fetch y forzamos el uso de la caché
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`,
+      {
+        cache: 'force-cache' //TODO: Cambiar esto en un futuro
+      }
+    ).then(response => response.json());
+    // Log para verificar el nombre del Pokémon cargado
+    console.log('The Pokemon charged is', pokemon.name);
+    // Devolvemos los datos del Pokémon
+    return pokemon
+
+  } catch (error) {
+    notFound();
+  }
+
+
+
 }
 
 // Componente principal de la página de un Pokémon
