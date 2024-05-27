@@ -23,7 +23,7 @@ const MenuItems = [
   },
 ]
 
-const Sidebar = () => {
+export const Sidebar = () => {
   return (
     <div id="menu"
       className="left-0 z-10 w-64 min-h-screen overflow-y-scroll bg-gray-900 text-slate-300">
@@ -60,4 +60,4 @@ const Sidebar = () => {
   );
 }
 
-export default Sidebar;
+// export default Sidebar;
