@@ -4,10 +4,9 @@ import Link from 'next/link'
 
 export default function NotFound() {
   return (
-    <div className="w-screen h-screen overflow-y-scroll antialiased bg-slate-100 text-slate-300 selection:bg-blue-600 selection:text-white">
+    <div className="w-full h-screen overflow-y-scroll antialiased bg-slate-100 text-slate-300 selection:bg-blue-600 selection:text-white">
       <div className="flex">
-        <Sidebar />
-
+        {/* <Sidebar /> */}
         <div className="w-full p-2 text-slate-900">
           <div className="flex flex-col items-center justify-center w-full h-screen space-x-8 space-y-16 lg:flex-row lg:space-y-0 2xl:space-x-0">
             <div className="flex flex-col items-center justify-center w-full text-center lg:w-1/2 lg:px-2 xl:px-0">
