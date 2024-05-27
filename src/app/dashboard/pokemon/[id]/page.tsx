@@ -21,7 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   } catch (error) {
     return {
-      ti
+      title: 'Page Not Found',
+      description: 'Page Not Found',
     }
   }
 
