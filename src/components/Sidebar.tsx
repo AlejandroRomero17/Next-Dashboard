@@ -40,7 +40,7 @@ export const Sidebar = () => {
         <a href="#" className="inline-flex items-center space-x-2">
           <span>
             <Image className='w-8 h-8 rounded-full'
-              src={"https://scontent-atl3-2.xx.fbcdn.net/v/t39.30808-6/440746777_122150427014130882_4130558836942058755_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHKNmRSPxBgRibEj73aWK-reQN6GUXwSih5A3oZRfBKKMhDoiGlEampMZaeypOoMA8W2weUueOe_v7jLDGILktD&_nc_ohc=FEQ38zFCBVMQ7kNvgHdPwUl&_nc_ht=scontent-atl3-2.xx&cb_e2o_trans=t&oh=00_AYCl7IZxsSYI11Wbkr6zu-FkbkvQmIfIvjppGjkFacbb0w&oe=6648A9C7"}
+              src={"https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/768px-Pok%C3%A9_Ball_icon.svg.png"}
               width={70}
               height={50}
               alt='Photo of Romero'
