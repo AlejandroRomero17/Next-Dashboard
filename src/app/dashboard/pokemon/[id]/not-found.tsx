@@ -1,13 +1,10 @@
-import { Sidebar } from '@/components'
 import Link from 'next/link'
-
 
 export default function NotFound() {
   return (
-    <div className="w-full h-screen overflow-y-scroll antialiased bg-slate-100 text-slate-300 selection:bg-blue-600 selection:text-white">
+    <div className="w-full h-screen antialiased bg-slate-100 text-slate-300 selection:bg-blue-600 selection:text-white">
       <div className="flex">
-        {/* <Sidebar /> */}
-        <div className="w-full p-2 text-slate-900">
+        <div className="w-full text-slate-900">
           <div className="flex flex-col items-center justify-center w-full h-screen space-x-8 space-y-16 lg:flex-row lg:space-y-0 2xl:space-x-0">
             <div className="flex flex-col items-center justify-center w-full text-center lg:w-1/2 lg:px-2 xl:px-0">
               <p className="font-bold tracking-wider text-gray-300 text-7xl md:text-8xl lg:text-9xl">404</p>
