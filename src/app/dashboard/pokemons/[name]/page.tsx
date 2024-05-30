@@ -1,5 +1,5 @@
 // Importamos el tipo Pokemon desde "@/pokemons" y Metadata desde "next"
-import { Pokemon } from "@/pokemons";
+import { Pokemon, PokemonsResponse } from "@/pokemons";
 import { Metadata } from "next";
 // Importamos el componente Image desde "next/image"
 import Image from "next/image";
@@ -7,15 +7,21 @@ import { notFound } from "next/navigation";
 
 // Definimos la interfaz Props que contiene un objeto params con una propiedad id de tipo string
 interface Props {
-  params: { id: string };
+  params: { name: string };
 }
 
 
-export async function generateStaticParams(){
-  const static151Pokemons = Array.from({length: 151}).map((v, i)=> `${i+1}`);
+export async function generateStaticParams() {
 
-  return static151Pokemons.map(id => ({
-    id: id
+  const data: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+    .then(res => res.json());
+
+  const static151Pokemons = data.results.map(pokemon => ({
+    name: pokemon.name,
+  }));
+
+  return static151Pokemons.map(({name}) => ({
+    name: name
   }))
 }
 
@@ -23,7 +29,7 @@ export async function generateStaticParams(){
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     // Llamamos a la función getPokemon para obtener el id y el nombre del Pokémon
-    const { id, name } = await getPokemon(params.id);
+    const { id, name } = await getPokemon(params.name);
     // Devolvemos un objeto Metadata con el título y la descripción de la página
     return {
       title: `#${id} - ${name}`,
@@ -39,10 +45,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // Función asíncrona para obtener los datos de un Pokémon desde la API
-const getPokemon = async (id: string): Promise<Pokemon> => {
+const getPokemon = async (name: string): Promise<Pokemon> => {
   try {
     // Hacemos una solicitud a la API de Pokémon usando fetch y forzamos el uso de la caché
-    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`,
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`,
       {
         // cache: 'force-cache' //TODO: Cambiar esto en un futuro
 
@@ -67,7 +73,7 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 // Componente principal de la página de un Pokémon
 export default async function PokemonPage({ params }: Props) {
   // Obtenemos los datos del Pokémon usando su id
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon(params.name);
 
   // Renderizamos la página del Pokémon
   return (
